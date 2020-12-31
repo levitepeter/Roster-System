@@ -2,3 +2,4 @@
 *.js linguist-detectable=false
 *.java linguist-detectable=false
 *.django linguist-detectable=true
+*.less linguist-detectable=false
