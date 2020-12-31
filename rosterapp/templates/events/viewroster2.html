@@ -1,0 +1,193 @@
+{% load static %}
+  
+{% load get_item %}
+
+<!--THIS PAGE DOES NOT DISPLAY ANYWHERE, IT IS JUST FOR SENDING FINAL ROSTER  EMAILS-->
+<head>
+<style>
+table, th, tr {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 5px;
+  text-align: left;
+}
+</style>
+<title></title>
+</head>
+<body>
+<div style="margin-top: 100px;margin-left: 25px;">
+ 
+<br>
+
+{% if team %}
+{% for key,value in team.items %}
+<!--key is date-->
+<h3>Roster for {{ key }}</h3>
+<div class="row">
+	<div class="col-md-6 col-lg-4 wow bounceInUp" data-aos="zoom-in" data-aos-delay="100">
+	  <div class="box" style="background-color: blue; margin: 15px;">
+		<h4 class="title"><a href="" style="color: white;">Team: </a></h4>
+	  </div>
+	</div>
+</div>
+<div class="row">
+	{% for v in value %}
+	<div class="col-md-6 col-lg-4 wow bounceInUp" data-aos="zoom-in" data-aos-delay="100">
+	  <div class="box" style="background-color: rgb(191, 228, 252); margin: 15px;">
+		<h4 class="title"><a href="">{{ v }}</a></h4>
+	  </div>
+	</div>
+	{% endfor %}
+</div>
+<div class="row">
+	<div class="col-md-6 col-lg-4 wow bounceInUp" data-aos="zoom-in" data-aos-delay="100">
+	  <div class="box" style="background-color: blue; margin: 15px;">
+		<h4 class="title"><a href="" style="color: white;">SetupHead: </a></h4>
+	  </div>
+	</div>
+</div>
+<div class="row">
+	{% with vals=setup_heads|get_item:key %}
+	{% for i in vals %}
+	<div class="col-md-6 col-lg-4 wow bounceInUp" data-aos="zoom-in" data-aos-delay="100">
+	  <div class="box" style="background-color: rgb(191, 228, 252); margin: 15px;">
+		<h4 class="title"><a href="">{{ i }}</a></h4>
+	  </div>
+	</div>
+	{% endfor %}
+	{% endwith %}
+</div>
+<div class="row">
+	<div class="col-md-6 col-lg-4 wow bounceInUp" data-aos="zoom-in" data-aos-delay="100">
+	  <div class="box" style="background-color: blue; margin: 15px;">
+		<h4 class="title"><a href="" style="color: white;">SoundHead: </a></h4>
+	  </div>
+	</div>
+</div>
+<div class="row">
+	{% with vals=sound_heads|get_item:key %}
+	{% for i in vals %}
+	<div class="col-md-6 col-lg-4 wow bounceInUp" data-aos="zoom-in" data-aos-delay="100">
+	  <div class="box" style="background-color: rgb(191, 228, 252); margin: 15px;">
+		<h4 class="title"><a href="">{{ i }}</a></h4>
+	  </div>
+	</div>
+	{% endfor %}
+	{% endwith %}
+</div>
+<div class="row">
+	<div class="col-md-6 col-lg-4 wow bounceInUp" data-aos="zoom-in" data-aos-delay="100">
+	  <div class="box" style="background-color: blue; margin: 15px;">
+		<h4 class="title"><a href="" style="color: white;">Pack-upOnly: </a></h4>
+	  </div>
+	</div>
+</div>
+<div class="row">
+	{% with vals=packup|get_item:key %}
+		{% for i in vals %}
+	<div class="col-md-6 col-lg-4 wow bounceInUp" data-aos="zoom-in" data-aos-delay="100">
+	  <div class="box" style="background-color: rgb(191, 228, 252); margin: 15px;">
+		<h4 class="title"><a href="">{{ i }}</a></h4>
+	  </div>
+	</div>
+	{% endfor %}
+	{% endwith %}
+</div>
+
+<br>
+{% endfor %}
+
+
+{% else %}
+{% endif %}
+
+
+<!--  
+<table>
+<tr>
+<th>
+SetupHead
+</th>
+<td>
+ABC
+</td>
+
+</tr>
+
+<tr>
+<th>
+Sound HEad
+</th>
+<td>
+DEF
+</td>
+</tr>
+
+<tr>
+<th>
+Team
+</th>
+{% if available_people %}
+{% for p in available_people %}
+<td>
+{{ p.user_id.name }}
+</td>
+
+{% endfor %}
+{% else %}
+{% endif %}
+
+</tr>
+
+<tr>
+<th>
+PackupOnly
+</th>
+<td>
+ef
+</td>
+
+</tr>
+
+<h1>
+Sound Head
+{% if sound_heads %}
+{% for key,value in sound_heads.items %}
+{{ value }}
+{% endfor %}
+
+
+{% else%}
+No sound heads
+{% endif%}
+</h1>
+<h1>
+Setup HEADS
+</h1>
+{% if setup_heads %}
+{% for key,value in setup_heads.items %}
+{{ value }}
+{% endfor %}
+{% else%}
+No setup heads
+{% endif%}
+
+<h1>
+TEAM
+</h1>
+{% if dics %}
+
+{% for key, value in dics.items %}
+<h4>
+{% for v in value %}
+{{ v }}
+{% endfor %}
+</h4>    
+{% endfor %}
+{% else %}
+{% endif %}
+</table>
+-->
+

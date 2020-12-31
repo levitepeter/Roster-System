@@ -1,0 +1,32 @@
+{% extends 'accounts/basehome.html' %}
+{% load static %}
+  
+{% block content %}
+
+  
+
+<!-- End Header -->
+
+  <form action="{% url 'login' %}" method="POST">
+      {% csrf_token %}
+
+  <div style="padding-top: 100px; padding-left: 5% ;height:45em; padding-right: 5%; margin-top: 100px; background-image: url('img8.jpg'); background-repeat: no-repeat; background-size: cover;">  
+    <div style="width:70%; background-image:url(img11.jpg); height:70%; text-align: center;margin-left: 15%; height: 90%; background-size: fit;">
+    <h3>Login to view the availability form</h3>
+    {% include 'accounts/_alerts.html' %}
+    <input type="email" style="border-color: blue; border-width:4px; border-radius: 8px; margin-bottom: 10px; margin-top:10%;" name="email" placeholder="Enter Email" required>
+    <br>
+    <input type="password" name="password" style="border-color: blue; border-width:4px; border-radius: 8px; margin-bottom: 5%; margin-top: 5%" placeholder="Enter password" required>
+    <br>
+    <button type="submit" class="button">Login</button>
+  <br>
+    <a href="{% url 'reset_password' %}">Forgot Password</a>
+        <br>
+    
+    </div>
+  </div>
+
+      
+  </form>
+{% endblock %}
+

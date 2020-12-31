@@ -1,0 +1,41 @@
+{% extends 'accounts/adminbase.html' %}
+{% load static %}
+  
+{% block content %}
+
+<form action="{% url 'createextraevents' %}" method="POST">
+{% csrf_token %}
+
+<div style="padding-top: 100px; padding-left: 5% ; padding-right: 5%">
+    <input type="date" style="border-color: blue; border-width:4px; border-radius: 8px; margin-bottom: 10px " name="eventdate" required>
+    <input type="text" style="border-color: blue; border-width:4px; border-radius: 8px; margin-bottom: 10px;" placeholder="Enter Event Name" name="eventname" required>
+    <button class="button" type="Submit">Submit</button>	
+
+</div>
+</form>
+
+
+{% endblock %}
+
+
+<!--
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<form action="{% url 'createextraevents' %}" method="POST">
+{% csrf_token %}
+
+Event Date
+<input type="date" name="eventdate" required>
+
+Event Name
+<input type="text" name="eventname" required>
+<br>
+<button type="Submit">Submit</button>	
+</form>
+</body>
+</html>-->

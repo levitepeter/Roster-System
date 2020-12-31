@@ -1,0 +1,249 @@
+{% extends 'accounts/base.html' %}
+{% load static %}
+{% load get_item %}
+
+{% block content %}
+
+<body>
+
+  <form action="{% url 'availability' %}" method="POST">
+	{% csrf_token %}
+
+	{% if team %}
+	{% for key,value in team.items %}
+
+  <section id="services" class="services section-bg"style="margin-top: 100px; background-image: url('img8.jpg'); background-repeat: no-repeat; background-size: cover;">
+    <div class="container" data-aos="fade-up">
+      <header class="section-header">
+        <!--<h2>Availability</h2>-->
+      </header>
+      <h3>{{ key }}</h3>
+      <label class="container">Click to give your availability
+      	{% with val=ids|get_item:key %}
+			<input name="trail4" type="checkbox" value="{{ key }}" >
+        	<span class="checkmark"></span>
+			{% endwith %}
+        <input name="trail4" type="checkbox" value="{{ key }}" >
+        <span class="checkmark"></span>
+      </label>
+
+      <label class="container">Click to give your availability for PACKUP ONLY
+      	{% with valp=idp|get_item:key %}
+        <input name="packup" type="checkbox" value="{{ key }}"  >
+        <span class="checkmark"></span>
+        {% endwith %}
+      </label>
+      
+
+      <div class="row">
+        <div class="col-md-6 col-lg-4 wow bounceInUp" data-aos="zoom-in" data-aos-delay="100">
+          <div class="box" style="background-color: rgb(21, 162, 252); margin: 15px; ">
+            <h4 class="title"><a href="" style="color: white;">Team</a></h4>
+          </div>
+        </div>
+      </div>
+
+     <div class="row">
+      {% for v in value %}
+		<div class="col-md-6 col-lg-4 wow bounceInUp" data-aos="zoom-in" data-aos-delay="100">
+          <div class="box" style="background-color: rgb(191, 228, 252); margin: 15px;">
+            <h4 class="title"><a href="">{{ v }}</a></h4>
+          </div>
+        </div>		
+		{% endfor %}
+	</div>	
+
+
+	<div class="row">
+        <div class="col-md-6 col-lg-4 wow bounceInUp" data-aos="zoom-in" data-aos-delay="100">
+          <div class="box" style="background-color: rgb(21, 162, 252); margin: 15px;">
+            <h4 class="title"><a href="" style="color: white;">Setup Heads</a></h4>
+          </div>
+        </div>
+      </div>
+
+     <div class="row">
+     	{% with vals=setup_heads|get_item:key %} 
+		{% for i in vals %}
+        <div class="col-md-6 col-lg-4 wow bounceInUp" data-aos="zoom-in" data-aos-delay="100">
+          <div class="box" style="background-color: rgb(191, 228, 252); margin: 15px;">
+            <h4 class="title"><a href="">{{ i }}</a></h4>
+          </div>
+        </div>		
+		{% endfor %}	
+		{% endwith %}	
+	</div>
+
+	<div class="row">
+        <div class="col-md-6 col-lg-4 wow bounceInUp" data-aos="zoom-in" data-aos-delay="100">
+          <div class="box" style="background-color: rgb(21, 162, 252); margin: 15px; ">
+            <h4 class="title"><a href="" style="color: white;">Sound Heads</a></h4>
+          </div>
+        </div>
+      </div>
+
+     <div class="row">
+     	{% with vals=sound_heads|get_item:key %} 
+		{% for i in vals %}
+        <div class="col-md-6 col-lg-4 wow bounceInUp" data-aos="zoom-in" data-aos-delay="100">
+          <div class="box" style="background-color: rgb(191, 228, 252); margin: 15px;">
+            <h4 class="title"><a href="">{{ i }}</a></h4>
+          </div>
+        </div>		
+		{% endfor %}	
+		{% endwith %}	
+	</div>	
+
+	
+	<div class="row">
+        <div class="col-md-6 col-lg-4 wow bounceInUp" data-aos="zoom-in" data-aos-delay="100">
+          <div class="box" style="background-color: rgb(21, 162, 252); margin: 15px;">
+            <h4 class="title"><a href="" style="color: white;">Packup Only</a></h4>
+          </div>
+        </div>
+      </div>
+
+     <div class="row">
+     	{% with vals=packup|get_item:key %} 
+		{% for i in vals %}
+        <div class="col-md-6 col-lg-4 wow bounceInUp" data-aos="zoom-in" data-aos-delay="100">
+          <div class="box" style="background-color: rgb(191, 228, 252); margin: 15px;">
+            <h4 class="title"><a href="">{{ i }}</a></h4>
+          </div>
+        </div>		
+		{% endfor %}	
+		{% endwith %}	
+	</div>	
+
+{% endfor %}
+	
+	
+	{% else %}
+	{% endif %}
+<button type="submit" class="button"> save</button>
+</form>
+
+<form action="{% url 'swap' %}" method="GET">
+	<button type="submit" class="button">Click here to swap </button>
+</form>
+
+{% endblock %}
+
+</div>
+</section>
+
+<!--
+<!DOCTYPE html>
+<html>
+<script type="text/javascript">
+
+	function display(e){
+		if(e.value=="Not Set")
+			e.value="{{ name }}"
+		else
+			e.value="Not Set"
+	}
+	
+	
+
+</script>
+
+<head>
+	<title>
+		
+	</title>
+</head>
+<body>
+
+<button onclick="location.href='{% url 'homepage' %}'">Logout</button>
+	<br>
+
+<form action="{% url 'availability' %}" method="POST">
+	{% csrf_token %}
+
+	{% if team %}
+	{% for key,value in team.items %}
+	key is date
+		{{ key }}
+		<br>
+			SetUp
+			{% with val=ids|get_item:key %}
+			<input name="trail4" type="checkbox" value="{{ key }}"  />
+			{% endwith %}
+
+			<br>
+			Please select this if you are available ONLY for packup
+			<!-- Packup Checkbox -->
+			{% with valp=idp|get_item:key %}
+			<input name="packup" type="checkbox" value="{{ key }}"  />
+			{% endwith %}
+
+		<br>
+		
+		<th>
+			Team:
+		</th>
+		{% for v in value %}
+		<tr>		
+			{{ v }}
+		</tr>
+		{% endfor %}
+		<tr>
+		</tr>
+		<br>
+
+		<th>
+			SetupHead:
+		</th> 
+		<tr>	
+		{% with vals=setup_heads|get_item:key %} 
+		{% for i in vals %}
+		{{ i }}
+		{% endfor %}	
+		{% endwith %}	
+		</tr>
+		<br>
+
+		<th>
+			SoundHead:
+		</th> 
+		<tr>	
+		{% with vals=sound_heads|get_item:key %} 
+		{% for i in vals %}
+		{{ i }}
+		{% endfor %}	
+		{% endwith %}	
+		</tr>
+		<br>
+
+		<th>
+			PackUpOnly:
+		</th> 
+		<tr>	
+		{% with vals=packup|get_item:key %} 
+		{% for i in vals %}
+		{{ i }}
+		{% endfor %}	
+		{% endwith %}	
+		</tr>
+		<br>
+		
+		<br>
+
+	{% endfor %}
+	
+	
+	{% else %}
+	{% endif %}
+
+<button type="submit"> save</button>
+
+</form>
+
+<form action="{% url 'swap' %}" method="GET">
+	<button type="submit">Click here to swap </button>
+</form>
+</body>
+</html>
+
+			 Setup Checkbox -->

@@ -1,0 +1,51 @@
+{% extends 'accounts/base.html' %}
+{% block content %}
+<body>
+
+<style>
+.myTable { 
+  width: 100%;
+  text-align: left;
+  background-color: rgb(21, 162, 252);
+  color: white;
+  border-collapse: collapse;
+
+  }
+.myTable th { 
+  background-color:rgb(21, 162, 252);
+  color: black; 
+
+  }
+.myTable td, 
+.myTable th { 
+  padding: 10px;
+  border: 1px solid rgb(191, 228, 252);; 
+  }
+</style>
+<br>
+<br>
+<br>
+<br>
+
+{% if myroster %}
+<table class="myTable">
+	
+	<tr>
+		<th> DATE</th>
+		<th>EVENT </th>
+	</tr>
+{% for i in myroster %}
+<tr>
+<td>{{ i.event_id.event_date }}</td>
+<td>{{ i.event_id }}</td>
+
+{% endfor %}
+{% else %}
+You have not been rostered for any event yet!
+{% endif %}
+</tr>
+</table>
+
+</body>
+
+{% endblock %}

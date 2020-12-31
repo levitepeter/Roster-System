@@ -1,0 +1,95 @@
+{% extends 'accounts/adminbase.html' %}
+{% load static %}
+  
+{% block content %}
+  
+  
+
+<div style="padding-top: 100px; padding-left: 5% ; padding-right: 5%; margin-top: 100px; background-image: url('img8.jpg'); background-repeat: no-repeat; background-size: cover;">
+	 {% include 'accounts/_alerts.html' %}
+	<h6>Click here to create events for the month: </h6>
+    <button class="button" onclick="location.href='{% url 'allevents' %}'">Create ALL Sundays</button>
+
+
+    <h6>Click here to create rooster: </h6>
+    <div>
+    	<form action="{% url 'roster' %}" method="POST">
+			{% csrf_token %}
+			<div class="dropdown">
+			
+			<select name="month" required style="width: 8em;border-radius: 8px;border-color:blue;border-width:4px;">
+			<option> </option>
+
+    		{% for key,value in month_choices.items %}
+			<option value="{{ key }}">{{ value }}</option>
+    		{% endfor %}
+			</select>
+			
+			<input class="button" style="width: 12em;" type="submit"value="Create Roster"/>
+			</div>
+		</form>		
+	</div>
+	
+    
+
+    <h6>Click here to view rooster: </h6>
+    <button class="button" onclick="location.href='{% url 'viewroster' %}'">View Roster</button>
+    <h6>Click here to create account </h6>
+    <button class="button" onclick="location.href='{% url 'createaccount' %}'">Create account</button>
+    <h6>Click here to create extra events: </h6>
+
+    <button class="button" onclick="location.href='{% url 'createextraevents' %}'">
+    Create Extra Events</button>
+</div>
+
+{% endblock %}
+
+
+<!--
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<br>
+create  for all sundays
+<button onclick="location.href='{% url 'allevents' %}'">Create ALL Sundays</button>
+<br>
+<br>
+
+<button onclick="location.href='{% url 'createextraevents' %}'">Create Extra Events</button>
+
+
+<br>
+
+<form action="{% url 'roster' %}" method="POST">
+	{% csrf_token %}
+	
+	<select name="month" required>
+		<option> </option>
+
+		{% for key,value in month_choices.items %}
+			<option value="{{ key }}">{{ value }}</option>
+		{% endfor %}
+	</select>
+	<input type="submit"value="Create Roster"/>
+	
+</form>
+<br>
+<button onclick="location.href='{% url 'viewroster' %}'">View Roster</button>
+
+<br>
+<br>
+<button>
+	Reminder
+</button>
+<br>
+<br>
+<button onclick="location.href='{% url 'createaccount' %}'">
+	create account
+</button>
+</body>
+</html>
+-->

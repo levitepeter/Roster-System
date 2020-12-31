@@ -1,0 +1,55 @@
+{% extends 'accounts/adminbase.html' %}
+{% load static %}
+  
+{% block content %}
+   <form action="{% url 'allevents' %}" method="post">
+	{% csrf_token %}
+
+	<div style="padding-top: 100px; padding-left: 5% ; padding-right: 5%">
+  		Choose Month
+      <select name="month" required style="width: 8em;border-radius: 8px;border-color:blue;border-width:4px;">
+      <option> </option>
+
+        {% for key,value in month_choices.items %}
+      <option value="{{ key }}">{{ value }}</option>
+        {% endfor %}
+      </select>
+      
+  		<button type="submit" class="button">CREATE</button>
+ 
+	</div>
+
+   
+      
+  </form>
+{% endblock %}
+
+<!--
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		
+	</title>
+</head>
+<body>
+
+	<div class="form-group">
+   <form action="{% url 'allevents' %}" method="post">
+	{% csrf_token %}
+
+	<select name="month" >
+    <option>Choose MONTH</option>
+
+    {% for key,value in month_choices.items %}
+	<option value="{{ key }}">{{ value }}</option>
+    {% endfor %}
+    </select>
+   	
+ 	<button type="submit" >CREATE</button>
+ 	</form>
+</div>
+
+
+</body>
+</html>

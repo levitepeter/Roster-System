@@ -1,0 +1,84 @@
+{% extends 'accounts/base.html' %}
+{% block content %}
+
+{% load get_item %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<style>
+.myTable { 
+  width: 100%;
+  text-align: left;
+  background-color: rgb(21, 162, 252);
+  color: white;
+  border-collapse: collapse;
+
+  }
+.myTable th { 
+  background-color:rgb(21, 162, 252);
+  color: black; 
+
+  }
+.myTable td, 
+.myTable th { 
+  padding: 10px;
+  border: 1px solid rgb(191, 228, 252);; 
+  }
+</style>
+<br>
+<br>
+<br>
+<br>
+
+{% if rosters %}
+<h2 style="text-align: center;">Roster For {{ month_name }}</h2>
+<table class="myTable">
+	
+	<tr>
+		<th> DATE</th>
+		<th> SetupHead </th>
+		<th> SoundHead</th>
+		<th> Team </th>
+		<th> Packup</th>
+	</tr>
+{% for key,value in team.items %}
+<tr>
+<td>{{ key }}, </td>
+{% with vals=setup_heads|get_item:key %}
+<td>
+{% for v in vals %}
+{{ v }},
+{% endfor %}</td>
+{% endwith %}
+{% with vals=sound_heads|get_item:key %}
+<td>
+{% for v in vals %}
+{{ v }},
+{% endfor %}</td>
+{% endwith %}
+<td>
+{% for v in value %}
+{{ v }},
+{% endfor %}</td>
+{% with vals=packup|get_item:key %}
+<td>
+{% for v in vals %}
+{{ v }},
+{% endfor %}</td>
+
+{% endwith %}
+{% endfor %}
+{% else %}
+You have not been rostered for any event yet!
+{% endif %}
+</tr>
+</table>
+
+</body>
+</html>
+{% endblock %}

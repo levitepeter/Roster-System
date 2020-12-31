@@ -1,0 +1,36 @@
+{% extends 'accounts/base.html' %}
+{% load static %}
+  
+{% block content %}
+	<div style="padding-top: 100px; padding-left: 5% ;height:45em; padding-right: 5%; margin-top: 100px; background-image: url('img8.jpg'); background-repeat: no-repeat; background-size: cover;">  
+		{% include 'accounts/_alerts.html' %}
+	<form action="{% url 'swap' %}" method="GET">
+		<h4>Date From</h4>
+		<input type="date" name="date_from" required style="border-color: blue;border-width: 4px; border-radius: 8px; margin-bottom: 20px;">
+		<h4>Date To</h4>
+		<input type="date" name="date_to" required style="border-color: blue;border-width: 4px; border-radius: 8px">
+		<br>
+		<button type="submit" class="button" style="width: auto; margin-top: 20px;">Available People</button>
+	</form>
+{% if people_available %}
+	
+	<form action="{% url 'swap' %}" method="POST">
+		{% csrf_token %}
+		<input type="text" name="from_date" value="{{ date_from }}" hidden>
+		<input type="text" name="to_date" value="{{ date_to }}" hidden>
+
+		<select name="to_person" required style="border-color: blue;border-width: 4px; border-radius: 8px">
+			<option> </option>
+
+			{% for key,value in dic_people_available.items %}
+				<option value="{{ key }}">{{ value }}</option>
+			{% endfor %}
+		</select>
+
+
+		<button type="submit" class="button">Swap</button>
+	</form>
+	</div>
+{% else %}
+{% endif %}
+{% endblock %}

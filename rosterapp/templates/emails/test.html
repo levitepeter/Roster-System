@@ -1,0 +1,18 @@
+{% extends 'accounts/base.html' %}
+{% load static %}
+  
+{% block content %}
+
+<body>
+      <div  style=" margin-top: 10em; margin-left: 2em;">
+<form action="{% url 'test_email' %}" method="POST">
+      {% csrf_token %}
+      <input type="text" name="message" required style="border-radius: 8px; border-width: 4px; border-color:blue;">
+
+      <button type="submit" class="button" >Submit</button>
+      
+</form>
+</div>
+</body>
+</html>
+{% endblock %}

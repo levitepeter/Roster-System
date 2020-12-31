@@ -1,0 +1,51 @@
+{% extends 'accounts/basehome.html' %}
+{% load static %}
+{% load get_item %}
+{% block content %}
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center" style="background-color: rgb(191, 228, 252);">
+    <div class="container d-flex align-items-center ">
+
+      <div class="logo mr-auto">
+        <h1 class="text-light"><a href="index.html"><span>APC</span></a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a> -->
+      </div>
+
+      <nav class="nav-menu d-none d-lg-block">
+        <ul>
+          <li class="active"><a href="#index.html">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <!-- /li><a href="#services">Services</a></li> -->
+          <!-- <li><a href="#portfolio">Portfolio</a></li> -->
+          <li><a href="{% url 'login' %}">Login</a>
+          <!-- <li><a href="#pricing">Pricing</a></li> -->
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav><!-- .nav-menu -->
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
+          <h1 data-aos="fade-up">Welcome to APC!!</h1>
+          <h2 data-aos="fade-up" data-aos-delay="400">Believe in me, you and your household shall be saved.</h2>
+          <!-- <div data-aos="fade-up" data-aos-delay="800">
+            <a href="#about" class="btn-get-started scrollto">Get Started</a>
+          </div>-->
+        </div> 
+        <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="fade-left" data-aos-delay="200">
+          <img src="{% static 'img/hero-img.png' %}" class="img-fluid animated" alt="">
+        </div>
+      </div>
+    </div>
+
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+    
+{% endblock %}

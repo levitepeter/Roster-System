@@ -1,0 +1,80 @@
+{% extends 'accounts/adminbase.html' %}
+{% load static %}
+  
+{% block content %}
+  
+<form action="{% url 'createaccount' %}" method="POST">
+		{% csrf_token %}
+	
+<div style="padding-top: 100px; padding-left: 5% ; padding-right: 5%; margin-top: 100px; background-image: url('img8.jpg'); background-repeat: no-repeat; background-size: cover;">  
+    <h3>Fill out the following form to  create an account: </h3>  
+    <input name="name" type="text" style="border-color: blue; border-width:4px; border-radius: 8px; margin-bottom: 10px;" placeholder="Enter Full Name" required>
+    <br>
+    <input name="email" type="email" style="border-color: blue; border-width:4px; border-radius: 8px; margin-bottom: 10px;" placeholder="Enter Email" required>
+    <br>
+    <input name="phonenumber" type="text" style="border-color: blue; border-width:4px; border-radius: 8px; margin-bottom: 10px;" placeholder="Enter phone number" required>
+    <br>
+    <input type="password" style="border-color: blue; border-width:4px; border-radius: 8px; margin-bottom: 10px;" placeholder="Enter password" name="password" required>
+    <br>
+
+    <label class="container">Click if Sound-head
+        <input type="checkbox" name="is_soundhead" >
+        <span class="checkmark"></span>
+    </label>
+    <label class="container">Click if Set-up head
+        <input type="checkbox" name="is_setuphead" >
+        <span class="checkmark"></span>
+    </label>
+    <label class="container">Click if Admin
+        <input type="checkbox" name="is_teamadmin" >
+        <span class="checkmark"></span>
+    </label>
+    <button class="button" type="submit"> Create</button>
+
+    
+ </div>
+
+</form>
+
+
+{% endblock %}
+
+<!--
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<form action="{% url 'createaccount' %}" method="POST">
+		{% csrf_token %}
+		Enter the name of the user
+		
+<input type="text" name="name" placeholder="Name should be unique" required>
+<br>
+
+Enter the phone number
+<input type="text" name="phonenumber" required>
+<br>
+
+Email ID
+<input type="email" name="email" required>
+<br>
+Password
+<input type="Password" name="password" required>
+<br> 
+Check the box is the user is Sound Head
+<input type="checkbox" name="is_soundhead" >
+<br>
+Check the box if the user is SetuHead
+<input type="checkbox" name="is_setuphead" >
+<br>
+Check the box if the user is Admin
+<input type="checkbox" name="is_teamadmin" >
+<br>
+<button type="submit"> Submit</button>
+
+	</form>
+</body>
+</html>-->
