@@ -1,4 +1,4 @@
-Roster System in Django
+ROSTER SYSTEM IN DJANGO 
 
 *The app keeps track of the eligibility and role of volunteers and schedules them accordingly as Sound-Head, Setup-Head, Admin, Team and Packup-Team. 
 
@@ -11,9 +11,13 @@ Roster System in Django
 Getting Started
 
 -Install the prerequisites
+-Create superuser 
 -Run the server
+-Create account for user 
+-Login as superuser and user
 
 Prerequisites
+
 Python 3.8.1
 django
 django-crontab
