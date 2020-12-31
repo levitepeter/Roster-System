@@ -18,6 +18,4 @@ Getting Started
 
 Prerequisites
 
-Python 3.8.1
-django
-django-crontab
+Python 3.8.1, django, django-crontab
