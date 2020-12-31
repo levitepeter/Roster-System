@@ -3,3 +3,4 @@
 *.java linguist-detectable=false
 *.django linguist-detectable=true
 *.less linguist-detectable=false
+*.html linguist-detectable=false
